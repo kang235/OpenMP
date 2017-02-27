@@ -263,19 +263,19 @@ int main()
 		file << count << " " << "romppt" << " " << end - start << endl;
 
 		start = omp_get_wtime();
-		sort_rec_tbb(f, w, count);;
+		sort_rec_tbb(f, w, count);
 		end = omp_get_wtime();
 		/*cout << "Sorted Array: " << endl;
 		printArray(c, count);*/
 		cout << "Recursive tbb parallel time: " << end - start << endl;
 		file << count << " " << "rtbbpt" << " " << end - start << endl;
 
-		if (!compareArrays(a, b, count))
+		if (!compareArrays(a, b, count) || !compareArrays(a, c, count))
 			cout << "iError" << endl;
 		else
 			cout << "iPass" << endl;
 
-		if (!compareArrays(c, d, count))
+		if (!compareArrays(d, e, count) || !compareArrays(d, f, count))
 			cout << "rError" << endl;
 		else
 			cout << "rPass" << endl;
@@ -288,5 +288,7 @@ int main()
 		delete[] b;
 		delete[] a;
 	}
+
+	file.close();
 }
 
